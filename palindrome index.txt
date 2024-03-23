@@ -1,0 +1,21 @@
+    int left = 0;
+    int right = s.length() - 1;
+
+    while (left < right) {
+        if (s[left] != s[right]) {
+            // Check if removing the character at the left index creates a palindrome
+            if (isPalindrome(s.substr(0, left) + s.substr(left + 1))) {
+                return left;
+            }
+            // If not, check the right side
+            if (isPalindrome(s.substr(0, right) + s.substr(right + 1))) {
+                return right;
+            }
+            // If neither side works, return -1
+            return -1;
+        }
+        left++;
+        right--;
+    }
+    
+    return -1; // String is already a palindrome

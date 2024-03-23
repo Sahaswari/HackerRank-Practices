@@ -1,0 +1,19 @@
+int lonelyinteger(int a_count, int* a) {
+for (int i = 0; i < a_count; i++) {
+        int isLonely = 1; // Assume a[i] is lonely until proven otherwise
+
+        for (int j = 0; j < a_count; j++) {
+            if (i != j && a[i] == a[j]) {
+                isLonely = 0; // a[i] is not lonely, mark it as not lonely
+                break;        // No need to check further
+            }
+        }
+
+        if (isLonely) {
+            return a[i]; // a[i] is lonely, return it
+        }
+    }
+
+    // If no lonely integer is found, you can return a special value or handle it differently
+    return -1; // For example, returning -1 to indicate no lonely integer found
+}

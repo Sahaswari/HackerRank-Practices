@@ -1,0 +1,7 @@
+qsort(arr, arr_count, sizeof(int), compareIntegers);
+    
+    // Calculate the median
+    int middleIndex = arr_count / 2;
+    int median = arr[middleIndex];
+    
+    return median;

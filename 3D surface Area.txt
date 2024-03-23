@@ -1,0 +1,34 @@
+int surfaceArea(vector<vector<int>>& A) {
+    int rows = A.size();
+    int cols = A[0].size();
+
+    int count = 0;
+    int etraA = 0;
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (A[i][j] > 0) {
+                count += 2; // Top and bottom faces are always visible
+            }
+
+            // Check left neighbor
+            int left = (j == 0) ? 0 : A[i][j - 1];
+            etraA += max(0, A[i][j] - left);
+
+            // Check right neighbor
+            int right = (j == cols - 1) ? 0 : A[i][j + 1];
+            etraA += max(0, A[i][j] - right);
+
+            // Check up neighbor
+            int up = (i == 0) ? 0 : A[i - 1][j];
+            etraA += max(0, A[i][j] - up);
+
+            // Check down neighbor
+            int down = (i == rows - 1) ? 0 : A[i + 1][j];
+            etraA += max(0, A[i][j] - down);
+        }
+    }
+
+    int area = count + etraA;
+    return area;
+}
